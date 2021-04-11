@@ -21,6 +21,7 @@ $font_family: 'Kumbh Sans', sans-serif;
 body {
     font-family: $font_family;
     background-image: linear-gradient(to top, hsl(240, 73%, 65%), hsl(273, 75%, 66%));
+    overflow: hidden;
 }
 
 .container {
@@ -34,21 +35,51 @@ body {
 .card {
     display: flex;
     flex-direction: row;
+    max-width: 100%;
     width: 920px;
     height: 500px;
     background-color: #fff;
     border-radius: 20px;
 
+    &::before {
+        background: url('../images/illustration-box-desktop.svg') no-repeat top right;
+        content: '';
+        background-position-y: 210px;
+        position: absolute;
+        height: 100%;
+        width: 10%;
+        margin-left: -53px;
+        z-index: 1;
+    }
+
     &__illustration {
         width: 55%;
-        background: url('../images/illustration-woman-online-desktop.svg') no-repeat right center, url('../images/bg-pattern-desktop.svg') no-repeat right center;
-        background-position-y: 50%, 65%;
+        position: relative;
+
+        &--one {
+            background: url('../images/bg-pattern-desktop.svg') no-repeat right center;
+            background-position-y: 65%;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        &--two {
+            background: url('../images/illustration-woman-online-desktop.svg') no-repeat right center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+    }
+
+    &__title {
+        margin-bottom: 40px;
     }
 
     &__content {
         width: 45%;
         padding: 40px 90px 40px 90px;
-        
+        color: $very_dark_desaturated_blue;
     }
 
     &__ques {
@@ -56,20 +87,44 @@ body {
         font-size: $font_size_ques;
         text-decoration: none;
         
-        &--icon {
+        &::after {
             background: url('../images/icon-arrow-down.svg') no-repeat top right;
-            background-size: 50px;
+            content: '';
+            display: block;
+            height: 10px;
+            width: 98%;
+            margin-top: -12px;
+        }
+
+        &:hover {
+            color: $soft_red;
+        }
+
+        &--icon {
+            &::after{
+                transform: rotate(180deg);
+                margin-left: 95%;
+            }
+        }
+
+        &--active {
+            font-weight: bold;
+            transition: all .3s ease-in-out;
         }
     }
 
     &__ans {
         color: $dark_grayish_blue;
         font-size: $font_size_ans;
+        line-height: 1.5em;
+        margin-top: 12px;
+        display: none;
+        transition: all .3s ease-in-out;
     }
 
     &__division {
         border-bottom: 1px solid $light_grayish_blue;
-        margin: 20px 0px;
+        margin: 16px 0px;
     }
 }
 
@@ -79,5 +134,39 @@ body {
     
     a {
         color: hsl(228, 45%, 44%);
+    }
+}
+
+@media (max-width: 800px) {
+    .card {
+        flex-direction: column;
+        margin-top: 100px;
+        height: 540px;
+
+        &__illustration {
+            width: 100%;
+            height: 100px;
+
+            &--one {
+                background: url('../images/bg-pattern-mobile.svg') no-repeat top center;
+                padding-bottom: 10px;
+            }
+    
+            &--two {
+                background: url('../images/illustration-woman-online-mobile.svg') no-repeat top center;
+                margin: -110px 0px 0px -14px;
+                padding-bottom: 90px;
+            }
+        }
+
+        &__title {
+            text-align: center;
+        }
+
+        &__content {
+            width: auto;
+            padding: 20px 30px 0px 30px;
+            color: $very_dark_desaturated_blue;
+        }
     }
 }

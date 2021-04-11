@@ -1,6 +1,7 @@
 body {
   font-family: "Kumbh Sans", sans-serif;
   background-image: linear-gradient(to top, #6565e7, #af67e9);
+  overflow: hidden;
 }
 
 .container {
@@ -14,36 +15,82 @@ body {
 .card {
   display: flex;
   flex-direction: row;
+  max-width: 100%;
   width: 920px;
   height: 500px;
   background-color: #fff;
   border-radius: 20px;
 }
+.card::before {
+  background: url("../images/illustration-box-desktop.svg") no-repeat top right;
+  content: "";
+  background-position-y: 210px;
+  position: absolute;
+  height: 100%;
+  width: 10%;
+  margin-left: -53px;
+  z-index: 1;
+}
 .card__illustration {
   width: 55%;
-  background: url("../images/illustration-woman-online-desktop.svg") no-repeat right center, url("../images/bg-pattern-desktop.svg") no-repeat right center;
-  background-position-y: 50%, 65%;
+  position: relative;
+}
+.card__illustration--one {
+  background: url("../images/bg-pattern-desktop.svg") no-repeat right center;
+  background-position-y: 65%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.card__illustration--two {
+  background: url("../images/illustration-woman-online-desktop.svg") no-repeat right center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.card__title {
+  margin-bottom: 40px;
 }
 .card__content {
   width: 45%;
   padding: 40px 90px 40px 90px;
+  color: #1d1e35;
 }
 .card__ques {
   color: #4a4b5e;
   font-size: 14px;
   text-decoration: none;
 }
-.card__ques--icon {
+.card__ques::after {
   background: url("../images/icon-arrow-down.svg") no-repeat top right;
-  background-size: 50px;
+  content: "";
+  display: block;
+  height: 10px;
+  width: 98%;
+  margin-top: -12px;
+}
+.card__ques:hover {
+  color: #f47c57;
+}
+.card__ques--icon::after {
+  transform: rotate(180deg);
+  margin-left: 95%;
+}
+.card__ques--active {
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
 .card__ans {
   color: #787887;
   font-size: 12px;
+  line-height: 1.5em;
+  margin-top: 12px;
+  display: none;
+  transition: all 0.3s ease-in-out;
 }
 .card__division {
   border-bottom: 1px solid #e7e7e9;
-  margin: 20px 0px;
+  margin: 16px 0px;
 }
 
 .attribution {
@@ -52,6 +99,35 @@ body {
 }
 .attribution a {
   color: #3e52a3;
+}
+
+@media (max-width: 800px) {
+  .card {
+    flex-direction: column;
+    margin-top: 100px;
+    height: 540px;
+  }
+  .card__illustration {
+    width: 100%;
+    height: 100px;
+  }
+  .card__illustration--one {
+    background: url("../images/bg-pattern-mobile.svg") no-repeat top center;
+    padding-bottom: 10px;
+  }
+  .card__illustration--two {
+    background: url("../images/illustration-woman-online-mobile.svg") no-repeat top center;
+    margin: -110px 0px 0px -14px;
+    padding-bottom: 90px;
+  }
+  .card__title {
+    text-align: center;
+  }
+  .card__content {
+    width: auto;
+    padding: 20px 30px 0px 30px;
+    color: #1d1e35;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
