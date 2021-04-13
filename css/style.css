@@ -1,11 +1,10 @@
 body {
   font-family: "Kumbh Sans", sans-serif;
   background-image: linear-gradient(to top, #6565e7, #af67e9);
-  overflow: hidden;
 }
 
 .container {
-  min-height: 100vh;
+  min-height: 770px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +14,7 @@ body {
 .card {
   display: flex;
   flex-direction: row;
-  max-width: 100%;
+  max-width: 90%;
   width: 920px;
   height: 500px;
   background-color: #fff;
@@ -27,8 +26,8 @@ body {
   background-position-y: 210px;
   position: absolute;
   height: 100%;
-  width: 10%;
-  margin-left: -53px;
+  width: 140px;
+  margin-left: -30px;
   z-index: 1;
 }
 .card__illustration {
@@ -49,7 +48,7 @@ body {
   position: absolute;
 }
 .card__title {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .card__content {
   width: 45%;
@@ -57,36 +56,40 @@ body {
   color: #1d1e35;
 }
 .card__ques {
+  display: inline-block;
+  width: 100%;
   color: #4a4b5e;
   font-size: 14px;
   text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 .card__ques::after {
-  background: url("../images/icon-arrow-down.svg") no-repeat top right;
-  content: "";
-  display: block;
-  height: 10px;
-  width: 98%;
-  margin-top: -12px;
+  content: url("../images/icon-arrow-down.svg");
+  float: right;
+  transition: all 0.4s ease-in-out;
 }
 .card__ques:hover {
   color: #f47c57;
 }
 .card__ques--icon::after {
   transform: rotate(180deg);
-  margin-left: 95%;
 }
 .card__ques--active {
   font-weight: bold;
-  transition: all 0.3s ease-in-out;
 }
 .card__ans {
   color: #787887;
   font-size: 12px;
   line-height: 1.5em;
-  margin-top: 12px;
-  display: none;
-  transition: all 0.3s ease-in-out;
+  height: 0;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+.card__ans--active {
+  height: 35px;
+  padding: 12px 0px 6px 0px;
+  opacity: 1;
 }
 .card__division {
   border-bottom: 1px solid #e7e7e9;
@@ -101,11 +104,14 @@ body {
   color: #3e52a3;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1040px) {
   .card {
     flex-direction: column;
     margin-top: 100px;
     height: 540px;
+  }
+  .card::before {
+    background: none;
   }
   .card__illustration {
     width: 100%;

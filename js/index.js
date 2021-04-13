@@ -10,13 +10,15 @@ for (var i = 0; i < item.length; i++) {
     for (var j = 0; j < allItem.length; j++) {
       allItem[j].classList.remove("card__ques--active");
       allItem[j].classList.remove("card__ques--icon");
-      allItem[j].nextElementSibling.style.display = "none";
+      allItem[j].nextElementSibling.classList.remove("card__ans--active");
+      // allItem[j].nextElementSibling.style.display = "none";
     }
 
     if(isActive) {
       this.classList.toggle("card__ques--active");
       this.classList.toggle("card__ques--icon");
-      this.nextElementSibling.style.display = "block";
+      this.nextElementSibling.classList.add("card__ans--active");
+      // this.nextElementSibling.style.display = "block";
     }
   });
 }
